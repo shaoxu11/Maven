@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     <mapper namespace="com.yjk.dao.UserDao">
+      <select id="getlist" resultMap="usermap" >
+        SELECT a.*,b.zname FROM userwan AS a,zu AS b WHERE a.zu_id=b.zid
+        <!-- <if test="user_name !=null and user_name !=''" >
+        and user_name like CONCAT('%',#{user_name},'%')
+        </if>
+        <if test="zu_id !=null and zu_id !=0">
+        and zu_id=#{zu_id}
+        </if> -->
+        </select>
+        <resultMap id="usermap" type="User">
+        <id property="id" column="id"/>
+        <result property="user_name" column="user_name"/>
+        <result property="user_address" column="user_address"/>
+     	<result property="user_tel" column="user_tel"/>   
+        <result property="zu_id" column="zu_id"/>
+        
+        <association property="wana" javaType="Wan" >
+        <result property="zname" column="zname"/>
+        </association>
+        
+        </resultMap>
+
+     <select id="get" resultType="User">
+     SELECT * FROM userwan
+     </select>
+     </mapper>
