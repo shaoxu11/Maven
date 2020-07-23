@@ -15,7 +15,7 @@ import com.sx.service.userService;
 public class tes {
 	@Autowired
 	private userService us;
-	
+	//远程库写入的数据
 	/**
 	 * 查询全部用户信息
 	 */
